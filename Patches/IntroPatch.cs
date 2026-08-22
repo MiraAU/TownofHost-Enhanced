@@ -1096,6 +1096,7 @@ class IntroCutsceneDestroyPatch
 [HarmonyPatch(typeof(IntroCutscene._ShowRole_d__40), nameof(IntroCutscene._ShowRole_d__40.MoveNext))]
 public class IntroCutsceneDestroyPatch
 {
+    public static double IntroDestroyTS;
     public static void Prefix(IntroCutscene._ShowRole_d__40 __instance, ref bool __result)
     {
         if (__instance.__1__state != 1) return;
