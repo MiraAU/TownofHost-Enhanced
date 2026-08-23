@@ -42,6 +42,7 @@ public static class CustomRolesHelper
             CustomRoles.TrackerTOHE => CustomRoles.Tracker,
             CustomRoles.DetectiveTOHE => CustomRoles.Detective,
             CustomRoles.ViperTOHE => CustomRoles.Viper,
+            CustomRoles.JudgeTOHE => CustomRoles.Judge,
 
             _ => role.IsImpostor() ? CustomRoles.Impostor : CustomRoles.Crewmate,
         };
@@ -186,7 +187,7 @@ public static class CustomRolesHelper
                 CustomRoles.Crusader or
                 CustomRoles.Overseer or
                 CustomRoles.Jailer or
-                CustomRoles.Judge or
+                CustomRoles.JudgeCustom or
                 CustomRoles.Medic or
                 CustomRoles.Medium or
                 CustomRoles.Monarch or
@@ -658,7 +659,7 @@ public static class CustomRolesHelper
                     return false;
                 if (pc.Is(CustomRoles.EvilGuesser)
                     || pc.Is(CustomRoles.NiceGuesser)
-                    || pc.Is(CustomRoles.Judge)
+                    || pc.Is(CustomRoles.JudgeCustom)
                     || pc.Is(CustomRoles.CopyCat)
                     || pc.Is(CustomRoles.Doomsayer)
                     || pc.Is(CustomRoles.Nemesis)
@@ -1443,7 +1444,8 @@ public static class CustomRolesHelper
             CustomRoles.Phantom or
             CustomRoles.Tracker or
             CustomRoles.Detective or
-            CustomRoles.Viper;
+            CustomRoles.Viper or
+            CustomRoles.Judge;
     }
     public static Custom_Team GetCustomRoleTeam(this CustomRoles role)
     {

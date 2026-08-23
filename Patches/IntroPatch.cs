@@ -616,6 +616,9 @@ class BeginCrewmatePatch
             case CustomRoles.ScientistTOHE:
                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
                 break;
+            case CustomRoles.JudgeTOHE:
+                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Judge);
+                break;
             case CustomRoles.Observer:
             case CustomRoles.Spiritualist:
                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.GuardianAngel);

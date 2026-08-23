@@ -214,11 +214,11 @@ public static class AntiBlackout
         player.IsDead = player.Disconnected = false;
         SendGameData();
     }
-    public static void AntiBlackRpcVotingComplete(this MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie)
+    public static void AntiBlackRpcVotingComplete(this MeetingHud __instance, MeetingHud.VoterState[] states, NetworkedPlayerInfo exiled, bool tie, bool wasOverruled, ushort overruleNonce)
     {
         if (AmongUsClient.Instance.AmClient)
         {
-            __instance.VotingComplete(states, exiled, tie);
+            __instance.VotingComplete(states, exiled, false, false, 0);
         }
 
         foreach (var pc in Main.EnumeratePlayerControls())

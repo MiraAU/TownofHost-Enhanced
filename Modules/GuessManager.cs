@@ -104,7 +104,7 @@ public static class GuessManager
         if (!pc.Is(CustomRoles.NiceGuesser)
             && !pc.Is(CustomRoles.EvilGuesser)
             && !pc.Is(CustomRoles.Doomsayer)
-            && !pc.Is(CustomRoles.Judge)
+            && !pc.Is(CustomRoles.JudgeCustom)
             && !pc.Is(CustomRoles.Councillor)
             && !pc.Is(CustomRoles.Guesser)
             && !Options.GuesserMode.GetBool()) return false;
@@ -451,7 +451,7 @@ public static class GuessManager
                 meetingHud.SetForegroundForDead();
             }
             PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First(
-                x => x.TargetPlayerId == pc.PlayerId
+                x => x.PlayerId == pc.PlayerId
             );
             if (voteArea == null) return;
             if (voteArea.DidVote) voteArea.UnsetVote();
@@ -462,16 +462,16 @@ public static class GuessManager
             voteArea.XMark.transform.localScale = Vector3.one;
             foreach (var playerVoteArea in meetingHud.playerStates)
             {
-                if (playerVoteArea.VotedFor != pc.PlayerId) continue;
+                if (playerVoteArea.VotedForId != pc.PlayerId) continue;
                 playerVoteArea.UnsetVote();
-                var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.TargetPlayerId);
+                var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.PlayerId);
                 if (!voteAreaPlayer.AmOwner) continue;
                 meetingHud.ClearVote();
             }
             Swapper.CheckSwapperTarget(pc.PlayerId);
 
             // Prevent double check end voting
-            if (meetingHud.state is MeetingHud.VoteStates.Discussion or MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted)
+            if (meetingHud.state is MeetingHud.MeetingStates.Discussion or MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted)
             {
                 meetingHud.CheckForEndVoting();
             }
@@ -504,7 +504,7 @@ public static class GuessManager
             meetingHud.SetForegroundForDead();
         }
         PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First(
-            x => x.TargetPlayerId == pc.PlayerId
+            x => x.PlayerId == pc.PlayerId
         );
         //pc.Die(DeathReason.Kill);
         if (voteArea == null) return;
@@ -516,9 +516,9 @@ public static class GuessManager
         voteArea.XMark.transform.localScale = Vector3.one;
         foreach (var playerVoteArea in meetingHud.playerStates.ToArray())
         {
-            if (playerVoteArea.VotedFor != pc.PlayerId) continue;
+            if (playerVoteArea.VotedForId != pc.PlayerId) continue;
             playerVoteArea.UnsetVote();
-            var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.TargetPlayerId);
+            var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.PlayerId);
             if (!voteAreaPlayer.AmOwner) continue;
             meetingHud.ClearVote();
         }
@@ -631,7 +631,7 @@ public static class GuessManager
     {
         foreach (var pva in __instance.playerStates.ToArray())
         {
-            var pc = Utils.GetPlayerById(pva.TargetPlayerId);
+            var pc = Utils.pva.PlayerId.GetPlayer();
             if (pc == null || !pc.IsAlive()) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
             GameObject targetBox = UnityEngine.Object.Instantiate(template, pva.transform);
@@ -641,7 +641,7 @@ public static class GuessManager
             renderer.sprite = CustomButton.Get("TargetIcon");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => GuesserOnClick(pva.TargetPlayerId, __instance)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => GuesserOnClick(pva.PlayerId, __instance)));
         }
     }
 
@@ -897,6 +897,9 @@ public static class GuessManager
                 if (!listOfRoles.Contains(CustomRoles.DetectiveTOHE))
                     listOfRoles.Add(CustomRoles.DetectiveTOHE);
 
+                if (!listOfRoles.Contains(CustomRoles.JudgeTOHE))
+                    listOfRoles.Add(CustomRoles.JudgeTOHE);
+
                 if (!listOfRoles.Contains(CustomRoles.Amnesiac))
                     listOfRoles.Add(CustomRoles.Amnesiac);
 
@@ -1046,7 +1049,7 @@ public static class GuessManager
                     }
                     else
                     {
-                        if (!(__instance.state == MeetingHud.VoteStates.Voted || __instance.state == MeetingHud.VoteStates.NotVoted) || !PlayerControl.LocalPlayer.IsAlive()) return;
+                        if (!(__instance.state == MeetingHud.MeetingStates.Voted || __instance.state == MeetingHud.MeetingStates.NotVoted) || !PlayerControl.LocalPlayer.IsAlive()) return;
 
                         Logger.Msg($"Click: {pc.GetNameWithRole().RemoveHtmlTags()} => {role}", "Guesser UI");
 

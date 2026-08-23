@@ -330,7 +330,7 @@ internal class DoubleAgent : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = GetPlayerById(pva.TargetPlayerId);
+            var pc = pva.PlayerId.GetPlayer();
             if (pc == null || !pc.IsAlive()) continue;
             if (pc.GetCustomRole().GetCustomRoleTeam() == Custom_Team.Impostor || PlayerControl.LocalPlayer == pc) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
@@ -343,7 +343,7 @@ internal class DoubleAgent : RoleBase
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
             button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => DestroyButtons(targetBox)));
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => PlantBombOnClick(pva.TargetPlayerId /*, __instance*/)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => PlantBombOnClick(pva.PlayerId /*, __instance*/)));
             button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => CustomSoundsManager.Play("Line")));
         }
     }

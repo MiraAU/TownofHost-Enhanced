@@ -105,7 +105,7 @@ public class dbConnect
             shouldDisconnect = true;
         }
 
-        if (shouldDisconnect)
+ /*       if (shouldDisconnect)
         {
             if (AmongUsClient.Instance.mode != InnerNet.MatchMakerModes.None)
                 AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
@@ -113,7 +113,7 @@ public class dbConnect
             DataManager.Player.Account.LoginStatus = EOSManager.AccountLoginStatus.Offline;
             DataManager.Player.Save();
             DestroyableSingleton<DisconnectPopup>.Instance.ShowCustom(GetString("dbConnect.InitFailure"));
-        }
+        }*/
     }
 
     private static string decidedApiToken = "";

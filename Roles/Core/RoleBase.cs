@@ -45,7 +45,7 @@ public abstract class RoleBase
 
 
         Add(playerid);
-        if (CustomRoleManager.OtherCollectionsSet) // If a Role is applied mid-game, filter them again jsut in-case
+        if (CustomRoleManager.OtherCollectionsSet) // If a Role is applied mid-game, filter them again just in-case
         {
             CustomRoleManager.Add();
         }
@@ -512,6 +512,7 @@ public abstract class RoleBase
         TrackerBase_TrackingDuration,
         TrackerBase_TrackingDelay,
         DetectiveBase_DetectiveSuspectLimit,
-        ViperBase_ViperDissolveTime
+        ViperBase_ViperDissolveTime,
+        JudgeBase_JudgeTaskRequirementPercentage
     }
 }
