@@ -14,10 +14,10 @@ using static TOHE.Utils;
 
 namespace TOHE.Roles.Crewmate;
 
-internal class Judge : RoleBase
+internal class JudgeCustom : RoleBase
 {
     //===========================SETUP================================\\
-    public override CustomRoles Role => CustomRoles.Judge;
+    public override CustomRoles Role => CustomRoles.JudgeCustom;
     private const int Id = 10700;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
@@ -46,26 +46,26 @@ internal class Judge : RoleBase
 
     public override void SetupCustomOption()
     {
-        Options.SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Judge);
-        TrialLimitPerMeeting = IntegerOptionItem.Create(Id + 10, "JudgeTrialLimitPerMeeting", new(1, 30, 1), 1, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge])
+        Options.SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.JudgeCustom);
+        TrialLimitPerMeeting = IntegerOptionItem.Create(Id + 10, "JudgeTrialLimitPerMeeting", new(1, 30, 1), 1, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom])
             .SetValueFormat(OptionFormat.Times);
-        TrialLimitPerGame = IntegerOptionItem.Create(Id + 25, "JudgeTrialLimitPerGame", new(1, 30, 1), 1, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge])
+        TrialLimitPerGame = IntegerOptionItem.Create(Id + 25, "JudgeTrialLimitPerGame", new(1, 30, 1), 1, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom])
             .SetValueFormat(OptionFormat.Times);
-        CanTrialMadmate = BooleanOptionItem.Create(Id + 12, "JudgeCanTrialMadmate", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialCharmed = BooleanOptionItem.Create(Id + 16, "JudgeCanTrialCharmed", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialSidekick = BooleanOptionItem.Create(Id + 19, "JudgeCanTrialSidekick", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialInfected = BooleanOptionItem.Create(Id + 20, "JudgeCanTrialInfected", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialContagious = BooleanOptionItem.Create(Id + 21, "JudgeCanTrialContagious", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialEnchanted = BooleanOptionItem.Create(Id + 24, "JudgeCanTrialEnchanted", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialCrewKilling = BooleanOptionItem.Create(Id + 13, "JudgeCanTrialnCrewKilling", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralB = BooleanOptionItem.Create(Id + 14, "JudgeCanTrialNeutralB", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralP = BooleanOptionItem.Create(Id + 27, "JudgeCanTrialNeutralP", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralE = BooleanOptionItem.Create(Id + 17, "JudgeCanTrialNeutralE", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralC = BooleanOptionItem.Create(Id + 18, "JudgeCanTrialNeutralC", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralK = BooleanOptionItem.Create(Id + 15, "JudgeCanTrialNeutralK", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialNeutralA = BooleanOptionItem.Create(Id + 22, "JudgeCanTrialNeutralA", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialCoven = BooleanOptionItem.Create(Id + 23, "JudgeCanTrialCoven", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
-        CanTrialAdmired = BooleanOptionItem.Create(Id + 26, "JudgeCanTrialAdmired", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Judge]);
+        CanTrialMadmate = BooleanOptionItem.Create(Id + 12, "JudgeCanTrialMadmate", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialCharmed = BooleanOptionItem.Create(Id + 16, "JudgeCanTrialCharmed", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialSidekick = BooleanOptionItem.Create(Id + 19, "JudgeCanTrialSidekick", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialInfected = BooleanOptionItem.Create(Id + 20, "JudgeCanTrialInfected", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialContagious = BooleanOptionItem.Create(Id + 21, "JudgeCanTrialContagious", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialEnchanted = BooleanOptionItem.Create(Id + 24, "JudgeCanTrialEnchanted", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialCrewKilling = BooleanOptionItem.Create(Id + 13, "JudgeCanTrialnCrewKilling", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralB = BooleanOptionItem.Create(Id + 14, "JudgeCanTrialNeutralB", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralP = BooleanOptionItem.Create(Id + 27, "JudgeCanTrialNeutralP", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralE = BooleanOptionItem.Create(Id + 17, "JudgeCanTrialNeutralE", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralC = BooleanOptionItem.Create(Id + 18, "JudgeCanTrialNeutralC", false, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralK = BooleanOptionItem.Create(Id + 15, "JudgeCanTrialNeutralK", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialNeutralA = BooleanOptionItem.Create(Id + 22, "JudgeCanTrialNeutralA", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialCoven = BooleanOptionItem.Create(Id + 23, "JudgeCanTrialCoven", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
+        CanTrialAdmired = BooleanOptionItem.Create(Id + 26, "JudgeCanTrialAdmired", true, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeCustom]);
     }
     public override void Init()
     {
@@ -112,7 +112,7 @@ internal class Judge : RoleBase
             return;
         }
         
-        if (player.Is(CustomRoles.Judge))
+        if (player.Is(CustomRoles.JudgeCustom))
             TrialMsg(player, text);
         else if (player.Is(CustomRoles.Councillor))
             Councillor.MurderMsg(player, text);
@@ -124,7 +124,7 @@ internal class Judge : RoleBase
 
         if (!AmongUsClient.Instance.AmHost) return false;
         if (!GameStates.IsMeeting || pc == null || GameStates.IsExilling) return false;
-        if (!pc.Is(CustomRoles.Judge)) return false;
+        if (!pc.Is(CustomRoles.JudgeCustom)) return false;
 
         msg = msg.ToLower().TrimStart().TrimEnd();
 
@@ -251,7 +251,7 @@ internal class Judge : RoleBase
                     Main.PlayersDiedInMeeting.Add(dp.PlayerId);
                     MurderPlayerPatch.AfterPlayerDeathTasks(pc, dp, true);
 
-                    _ = new LateTask(() => { SendMessage(string.Format(GetString("Judge_TrialKill"), Name), 255, ColorString(GetRoleColor(CustomRoles.Judge), GetString("Judge_TrialKillTitle")), true); }, 0.6f, "Guess Msg");
+                    _ = new LateTask(() => { SendMessage(string.Format(GetString("Judge_TrialKill"), Name), 255, ColorString(GetRoleColor(CustomRoles.JudgeCustom), GetString("Judge_TrialKillTitle")), true); }, 0.6f, "Guess Msg");
 
                 }, 0.2f, "Trial Kill");
         }
@@ -312,16 +312,16 @@ internal class Judge : RoleBase
     }
 
     public override string NotifyPlayerName(PlayerControl seer, PlayerControl target, string TargetPlayerName = "", bool IsForMeeting = false)
-        => IsForMeeting && seer.IsAlive() && target.IsAlive() ? ColorString(GetRoleColor(CustomRoles.Judge), target.PlayerId.ToString()) + " " + TargetPlayerName : "";
+        => IsForMeeting && seer.IsAlive() && target.IsAlive() ? ColorString(GetRoleColor(CustomRoles.JudgeCustom), target.PlayerId.ToString()) + " " + TargetPlayerName : "";
     public override string PVANameText(PlayerVoteArea pva, PlayerControl seer, PlayerControl target)
-        => seer.IsAlive() && target.IsAlive() ? ColorString(GetRoleColor(CustomRoles.Judge), target.PlayerId.ToString()) + " " + pva.NameText.text : "";
+        => seer.IsAlive() && target.IsAlive() ? ColorString(GetRoleColor(CustomRoles.JudgeCustom), target.PlayerId.ToString()) + " " + pva.NameText.text : "";
 
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     class StartMeetingPatch
     {
         public static void Postfix(MeetingHud __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(CustomRoles.Judge) && PlayerControl.LocalPlayer.IsAlive())
+            if (PlayerControl.LocalPlayer.Is(CustomRoles.JudgeCustom) && PlayerControl.LocalPlayer.IsAlive())
                 CreateJudgeButton(__instance);
         }
     }
@@ -329,7 +329,7 @@ internal class Judge : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = GetPlayerById(pva.TargetPlayerId);
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
 
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
@@ -340,7 +340,7 @@ internal class Judge : RoleBase
             renderer.sprite = CustomButton.Get("JudgeIcon");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => JudgeOnClick(pva.TargetPlayerId/*, __instance*/)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => JudgeOnClick((byte)pva.PlayerId/*, __instance*/)));
         }
     }
 }

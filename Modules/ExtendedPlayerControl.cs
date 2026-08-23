@@ -340,7 +340,27 @@ static class ExtendedPlayerControl
             writer.SendMessage();
         }
     }
-    public static void RpcClearVoteDelay(this MeetingHud meeting, int clientId)
+    /*   public static void RpcClearVoteDelay(this MeetingHud meeting, int clientId)
+       {
+           _ = new LateTask(() =>
+           {
+               if (meeting == null)
+               {
+                   Logger.Info($"Cannot be cleared because meetinghud is null", "RpcClearVoteDelay");
+                   return;
+               }
+               if (AmongUsClient.Instance.ClientId == clientId)
+               {
+                   meeting.ClearVote();
+                   return;
+               }
+               var writer = CustomRpcSender.Create("Clear Vote", SendOption.Reliable);
+               writer.AutoStartRpc(meeting.NetId, (byte)RpcCalls.ClearVote, clientId).EndRpc();
+               writer.SendMessage();
+           }, 0.5f, "Clear Vote");
+       }*/
+
+    public static void RpcClearVoteDelay(this MeetingHud meeting, PlayerId voterPlayerId) //credits to TONE
     {
         _ = new LateTask(() =>
         {
@@ -349,17 +369,11 @@ static class ExtendedPlayerControl
                 Logger.Info($"Cannot be cleared because meetinghud is null", "RpcClearVoteDelay");
                 return;
             }
-            if (AmongUsClient.Instance.ClientId == clientId)
-            {
-                meeting.ClearVote();
-                return;
-            }
-            var writer = CustomRpcSender.Create("Clear Vote", SendOption.Reliable);
-            writer.AutoStartRpc(meeting.NetId, (byte)RpcCalls.ClearVote, clientId).EndRpc();
-            writer.SendMessage();
+            meeting.RpcClearVote(voterPlayerId);
         }, 0.5f, "Clear Vote");
     }
-    public static void RpcSetNameEx(this PlayerControl player, string name)
+
+        public static void RpcSetNameEx(this PlayerControl player, string name)
     {
         name = name.Replace("color=", string.Empty);
         foreach (var seer in Main.EnumeratePlayerControls())
@@ -1032,7 +1046,7 @@ static class ExtendedPlayerControl
     }
 
     public static float GetKillDistances(bool ovverideValue = false, int newValue = 2)
-        => NormalGameOptionsV10.KillDistances[Mathf.Clamp(ovverideValue ? newValue : Main.NormalOptions.KillDistance, 0, 2)];
+        => NormalGameOptionsV11.KillDistances[Mathf.Clamp(ovverideValue ? newValue : Main.NormalOptions.KillDistance, 0, 2)];
 
     public static void MarkDirtySettings(this PlayerControl player)
     {

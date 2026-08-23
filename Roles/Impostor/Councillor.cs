@@ -256,7 +256,7 @@ internal class Councillor : RoleBase
                     {
                         if (!MakeEvilJudgeClear.GetBool())
                         {
-                            Utils.SendMessage(string.Format(GetString("Judge_TrialKill"), Name), 255, Utils.ColorString(Utils.GetRoleColor(CustomRoles.Judge), GetString("Judge_TrialKillTitle")), true);
+                            Utils.SendMessage(string.Format(GetString("Judge_TrialKill"), Name), 255, Utils.ColorString(Utils.GetRoleColor(CustomRoles.JudgeCustom), GetString("Judge_TrialKillTitle")), true);
                         }
                         else
                         {
@@ -335,7 +335,7 @@ internal class Councillor : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = Utils.GetPlayerById(pva.TargetPlayerId);
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
             GameObject targetBox = UnityEngine.Object.Instantiate(template, pva.transform);
@@ -345,7 +345,7 @@ internal class Councillor : RoleBase
             renderer.sprite = CustomButton.Get("MeetingKillButton");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => CouncillorOnClick(pva.TargetPlayerId/*, __instance*/)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => CouncillorOnClick((byte)pva.PlayerId/*, __instance*/)));
         }
     }
 }

@@ -56,13 +56,13 @@ public class Main : BasePlugin
 
     public static ConfigEntry<string> DebugKeyInput { get; private set; }
 
-    public const string PluginGuid = "com.batmenzdw.townofhostenhanced";
+    public const string PluginGuid = "com.ten.townofhostenhanced";
     public const string PluginGuid4 = "90759289-1d0d-494b-b36c-839f93ae0df1"; // for matchmaking token
-    public const string PluginVersion = "2026.0514.242.16000"; // YEAR.MMDD.VERSION.CANARYDEV
-    public const string PluginDisplayVersion = "2.4.2 Beta 16";
+    public const string PluginVersion = "2026.0823.242.17000"; // YEAR.MMDD.VERSION.CANARYDEV
+    public const string PluginDisplayVersion = "2.4.2 Beta 17";
     public static readonly List<(int year, int month, int day, int revision)> SupportedVersionAU =
     [
-        (2025, 11, 18, 0) // 2025.11.18 & 17.1
+        (2026, 8, 18, 0) // 2025.11.18 & 17.1
     ];
 
     // Change this to change alpha/beta/full release
@@ -86,13 +86,13 @@ public class Main : BasePlugin
     public static readonly bool ShowUpdateButton = true;
 
     public static readonly bool ShowGitHubButton = true;
-    public static readonly string GitHubInviteUrl = "https://github.com/BatmenzDW/TownofHost-Enhanced/";
+    public static readonly string GitHubInviteUrl = "https://github.com/MiraAU/TownofHost-Enhanced/";
 
     public static readonly bool ShowDiscordButton = true;
-    public static readonly string DiscordInviteUrl = "WIP";
+    public static readonly string DiscordInviteUrl = "https://discord.gg/hAKrVn5K9F/";
 
     public static readonly bool ShowWebsiteButton = true;
-    public static readonly string WebsiteInviteUrl = "WIP";
+    public static readonly string WebsiteInviteUrl = "https://tohe.weareten.ca/";
 
     public static readonly bool ShowDonationButton = true;
     public static readonly string DonationInviteUrl = "WIP";
@@ -107,8 +107,8 @@ public class Main : BasePlugin
     public static string credentialsText;
     public Coroutines coroutines;
     public Dispatcher dispatcher;
-    public static NormalGameOptionsV10 NormalOptions => GameOptionsManager.Instance.currentNormalGameOptions;
-    public static HideNSeekGameOptionsV10 HideNSeekOptions => GameOptionsManager.Instance.currentHideNSeekGameOptions;
+    public static NormalGameOptionsV11 NormalOptions => GameOptionsManager.Instance.currentNormalGameOptions;
+    public static HideNSeekGameOptionsV11 HideNSeekOptions => GameOptionsManager.Instance.currentHideNSeekGameOptions;
     //Client Options
     public static ConfigEntry<string> HideName { get; private set; }
     public static ConfigEntry<string> HideColor { get; private set; }
@@ -683,8 +683,8 @@ public class Main : BasePlugin
         ClassInjector.RegisterTypeInIl2Cpp<ShapeShifterPagingBehaviour>();
         ClassInjector.RegisterTypeInIl2Cpp<VitalsPagingBehaviour>();
 
-        NormalGameOptionsV10.RecommendedImpostors = NormalGameOptionsV10.MaxImpostors = Enumerable.Repeat(128, 128).ToArray();
-        NormalGameOptionsV10.MinPlayers = Enumerable.Repeat(4, 128).ToArray();
+        NormalGameOptionsV11.RecommendedImpostors = NormalGameOptionsV11.MaxImpostors = Enumerable.Repeat(128, 128).ToArray();
+        NormalGameOptionsV11.MinPlayers = Enumerable.Repeat(4, 128).ToArray();
         HideNSeekGameOptionsV10.MinPlayers = Enumerable.Repeat(4, 128).ToArray();
         DisconnectPopup.ErrorMessages[DisconnectReasons.Hacking] = StringNames.ErrorHacking;
 
@@ -713,6 +713,7 @@ public enum CustomRoles
     Scientist,
     Tracker,
     Detective,
+    Judge,
 
     // Impostor(Vanilla)
     Impostor,
@@ -728,6 +729,7 @@ public enum CustomRoles
     ScientistTOHE,
     TrackerTOHE,
     DetectiveTOHE,
+    JudgeTOHE,
 
     // Impostor Vanilla Remakes
     ImpostorTOHE,
@@ -852,7 +854,7 @@ public enum CustomRoles
     Inspector,
     Investigator,
     Jailer,
-    Judge,
+    JudgeCustom,
     Keeper,
     Knight,
     LazyGuy,
