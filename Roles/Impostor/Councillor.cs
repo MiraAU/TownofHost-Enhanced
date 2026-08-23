@@ -335,7 +335,7 @@ internal class Councillor : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = Utils.pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
             GameObject targetBox = UnityEngine.Object.Instantiate(template, pva.transform);
@@ -345,7 +345,7 @@ internal class Councillor : RoleBase
             renderer.sprite = CustomButton.Get("MeetingKillButton");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => CouncillorOnClick(pva.PlayerId/*, __instance*/)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => CouncillorOnClick((byte)pva.PlayerId/*, __instance*/)));
         }
     }
 }

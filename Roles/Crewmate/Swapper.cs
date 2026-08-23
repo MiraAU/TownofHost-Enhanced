@@ -358,7 +358,7 @@ internal class Swapper : RoleBase
         {
             if (pva.transform.Find("SwapButton") != null) UnityEngine.Object.Destroy(pva.transform.Find("SwapButton").gameObject);
 
-            var pc = pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             var local = PlayerControl.LocalPlayer;
             if (pc == null || !pc.IsAlive()) continue;
 

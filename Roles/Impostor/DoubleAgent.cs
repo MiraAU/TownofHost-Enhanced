@@ -330,7 +330,7 @@ internal class DoubleAgent : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
             if (pc.GetCustomRole().GetCustomRoleTeam() == Custom_Team.Impostor || PlayerControl.LocalPlayer == pc) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;

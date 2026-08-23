@@ -239,7 +239,7 @@ internal class Retributionist : RoleBase
     {
         foreach (var pva in __instance.playerStates.ToArray())
         {
-            var pc = pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
 
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;

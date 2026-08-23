@@ -329,7 +329,7 @@ internal class JudgeCustom : RoleBase
     {
         foreach (var pva in __instance.playerStates)
         {
-            var pc = pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
 
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
@@ -340,7 +340,7 @@ internal class JudgeCustom : RoleBase
             renderer.sprite = CustomButton.Get("JudgeIcon");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => JudgeOnClick(pva.PlayerId/*, __instance*/)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => JudgeOnClick((byte)pva.PlayerId/*, __instance*/)));
         }
     }
 }

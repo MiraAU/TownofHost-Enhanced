@@ -175,7 +175,7 @@ internal class Dictator : RoleBase
         {
             if (pva.transform.Find("DictatorButton") != null) UnityEngine.Object.Destroy(pva.transform.Find("DictatorButton").gameObject);
 
-            var pc = pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             var local = PlayerControl.LocalPlayer;
             if (pc == null || !pc.IsAlive()) continue;
 

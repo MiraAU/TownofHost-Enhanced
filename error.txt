@@ -1,0 +1,45 @@
+C:\Users\N\source\repos\TOHE\Modules\dbConnect.cs(82,14): warning CS0219: The variable 'shouldDisconnect' is assigned but its value is never used [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\GuessManager.cs(469,28): error CS7036: There is no argument given that corresponds to the required parameter 'voterIdToClear' of 'MeetingHud.ClearVote(PlayerId, bool)' [C:\U
+sers\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\GuessManager.cs(523,24): error CS7036: There is no argument given that corresponds to the required parameter 'voterIdToClear' of 'MeetingHud.ClearVote(PlayerId, bool)' [C:\U
+sers\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\GuessManager.cs(634,28): error CS0117: 'Utils' does not contain a definition for 'pva' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\ExtendedPlayerControl.cs(1385,63): error CS0117: 'PlayerId' does not contain a definition for 'GetPlayer' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\ExtendedPlayerControl.cs(1731,84): error CS1061: 'PlayerControl' does not contain a definition for 'playerId' and no accessible extension method 'playerId' accepting a first
+ argument of type 'PlayerControl' could be found (are you missing a using directive or an assembly reference?) [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Modules\Rpc\RPC.cs(608,17): error CS0103: The name 'Judge' does not exist in the current context [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\ControlPatch.cs(238,41): error CS7036: There is no argument given that corresponds to the required parameter 'wasOverruled' of 'MeetingHud.RpcVotingComplete(Il2CppStructArra
+y<MeetingHud.VoterState>, NetworkedPlayerInfo, bool, bool, ushort)' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\ChatCommandPatch.cs(316,152): error CS0103: The name 'Judge' does not exist in the current context [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\IntroPatch.cs(76,24): error CS1061: 'HudManager' does not contain a definition for 'SetMapButtonEnabled' and no accessible extension method 'SetMapButtonEnabled' accepting a
+ first argument of type 'HudManager' could be found (are you missing a using directive or an assembly reference?) [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\IntroPatch.cs(93,24): error CS1061: 'HudManager' does not contain a definition for 'SetMapButtonEnabled' and no accessible extension method 'SetMapButtonEnabled' accepting a
+ first argument of type 'HudManager' could be found (are you missing a using directive or an assembly reference?) [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(856,38): error CS9135: A constant value of type 'PlayerId' is expected [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(856,50): error CS9135: A constant value of type 'PlayerId' is expected [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(856,72): error CS9135: A constant value of type 'PlayerId' is expected [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(876,32): error CS1929: 'PlayerId' does not contain a definition for 'GetRoleClassById' and the best extension method overload 'CustomRoleManager.GetRoleCl
+assById(byte)' requires a receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(52,36): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a r
+eceiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(128,36): error CS1061: 'MeetingHud' does not contain a definition for 'UpdateButtons' and no accessible extension method 'UpdateButtons' accepting a first
+ argument of type 'MeetingHud' could be found (are you missing a using directive or an assembly reference?) [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(634,31): error CS0117: 'PlayerId' does not contain a definition for 'GetPlayer' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(1114,26): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a
+ receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Patches\MeetingHudPatch.cs(1293,36): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a
+ receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Neutral\Collector.cs(99,32): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a r
+eceiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Crewmate\Dictator.cs(178,22): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a
+receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Crewmate\Retributionist.cs(242,22): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requi
+res a receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Crewmate\Judge.cs(332,22): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a rec
+eiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Crewmate\Swapper.cs(361,22): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires a r
+eceiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Impostor\Councillor.cs(338,28): error CS0117: 'Utils' does not contain a definition for 'pva' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Impostor\Nemesis.cs(248,28): error CS0117: 'Utils' does not contain a definition for 'pva' [C:\Users\N\source\repos\TOHE\TOHE.csproj]
+C:\Users\N\source\repos\TOHE\Roles\Impostor\DoubleAgent.cs(333,22): error CS1929: 'PlayerId' does not contain a definition for 'GetPlayer' and the best extension method overload 'Utils.GetPlayer(byte)' requires
+ a receiver of type 'byte' [C:\Users\N\source\repos\TOHE\TOHE.csproj]

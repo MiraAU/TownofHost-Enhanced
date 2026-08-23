@@ -464,9 +464,9 @@ public static class GuessManager
             {
                 if (playerVoteArea.VotedForId != pc.PlayerId) continue;
                 playerVoteArea.UnsetVote();
-                var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.PlayerId);
+                var voteAreaPlayer = Utils.GetPlayerById((byte)playerVoteArea.PlayerId);
                 if (!voteAreaPlayer.AmOwner) continue;
-                meetingHud.ClearVote();
+                meetingHud.ClearVote(playerVoteArea.PlayerId, false);
             }
             Swapper.CheckSwapperTarget(pc.PlayerId);
 
@@ -518,9 +518,9 @@ public static class GuessManager
         {
             if (playerVoteArea.VotedForId != pc.PlayerId) continue;
             playerVoteArea.UnsetVote();
-            var voteAreaPlayer = Utils.GetPlayerById(playerVoteArea.PlayerId);
+            var voteAreaPlayer = Utils.GetPlayerById((byte)playerVoteArea.PlayerId);
             if (!voteAreaPlayer.AmOwner) continue;
-            meetingHud.ClearVote();
+            meetingHud.ClearVote(playerVoteArea.PlayerId, false);
         }
         hudManager.SetHudActive(false);
         _ = new LateTask(() => hudManager.SetHudActive(false), 0.3f, "SetHudActive in ClientGuess", shoudLog: false);
@@ -631,7 +631,7 @@ public static class GuessManager
     {
         foreach (var pva in __instance.playerStates.ToArray())
         {
-            var pc = Utils.pva.PlayerId.GetPlayer();
+            var pc = Utils.GetPlayerById((byte)pva.PlayerId);
             if (pc == null || !pc.IsAlive()) continue;
             GameObject template = pva.Buttons.transform.Find("CancelButton").gameObject;
             GameObject targetBox = UnityEngine.Object.Instantiate(template, pva.transform);
@@ -641,7 +641,7 @@ public static class GuessManager
             renderer.sprite = CustomButton.Get("TargetIcon");
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
             button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => GuesserOnClick(pva.PlayerId, __instance)));
+            button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => GuesserOnClick((byte)pva.PlayerId, __instance)));
         }
     }
 

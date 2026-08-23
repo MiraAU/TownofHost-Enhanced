@@ -235,7 +235,7 @@ internal class ControllerManagerUpdatePatch
                             MeetingHud.Instance.RpcClearVote(pva.PlayerId);
                     }
                     List<MeetingHud.VoterState> statesList = [];
-                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), null, true);
+                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), null, true, false, 0);
                     MeetingHud.Instance.RpcClose();
                 }
                 else

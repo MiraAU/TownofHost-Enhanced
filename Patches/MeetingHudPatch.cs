@@ -49,7 +49,7 @@ class CheckForEndVotingPatch
             foreach (var pva in __instance.playerStates)
             {
                 if (pva == null) continue;
-                PlayerControl pc = pva.PlayerId.GetPlayer();
+                PlayerControl pc = Utils.GetPlayerById((byte)pva.PlayerId);
                 if (pc == null) continue;
 
                 if (pva.DidVote && pc.PlayerId == pva.VotedForId && pva.VotedForId < 253 && pc.IsAlive())
@@ -125,7 +125,6 @@ class CheckForEndVotingPatch
                     if (voteTarget == null || !voteTarget.IsAlive() || voteTarget.Data.Disconnected)
                     {
                         SendMessage(GetString("VoteDead"), pc.PlayerId);
-                        __instance.UpdateButtons();
                         __instance.RpcClearVoteDelay((InnerNet.PlayerId)pc.GetClientId());
                         Swapper.CheckSwapperTarget(pva.VotedForId);
                         continue;
@@ -631,7 +630,7 @@ class CheckForEndVotingPatch
         var AddedIdList = new List<byte>();
         foreach (var playerId in playerIds)
         {
-            var pc = PlayerId.GetPlayer();
+            var pc = playerId.GetPlayer();
             if (pc == null) return;
             if (pc.Is(CustomRoles.Susceptible))
             {
@@ -853,7 +852,7 @@ static class ExtendedMeetingHud
             if (ps == null) continue;
 
             // whether this player is voted for in the player panel
-            if (ps.VotedForId is not 252 and not byte.MaxValue and not 254)
+            if ((byte)ps.VotedForId is not 252 and not byte.MaxValue and not 254)
             {
                 // Default number of votes 1
                 int VoteNum = 1;
@@ -873,7 +872,7 @@ static class ExtendedMeetingHud
                 var pc = GetPlayerById(ps.PlayerId);
                 if (pc != null && CheckForEndVotingPatch.CheckRole(ps.PlayerId, pc.GetCustomRole())
                     && ps.PlayerId != ps.VotedForId && ps != null)
-                    VoteNum += ps.PlayerId.GetRoleClassById().AddRealVotesNum(ps); // returns + 0 or given role value (+/-)
+                    VoteNum += ((byte)ps.PlayerId).GetRoleClassById().AddRealVotesNum(ps); // returns + 0 or given role value (+/-)
 
                 if (CheckForEndVotingPatch.CheckRole(ps.PlayerId, CustomRoles.Knighted) // not doing addons lol, so this stays
                     && ps.PlayerId != ps.VotedForId
@@ -1111,7 +1110,7 @@ class MeetingHudStartPatch
         foreach (var pva in __instance.playerStates)
         {
             var player = PlayerControl.LocalPlayer;
-            var target = pva.PlayerId.GetPlayer();
+            var target = Utils.GetPlayerById((byte)pva.PlayerId);
             if (target == null || player == null) continue;
 
             var playerId = player.PlayerId;
@@ -1290,7 +1289,7 @@ class MeetingHudStartPatch
         foreach (var pva in __instance.playerStates)
         {
             if (pva == null) continue;
-            PlayerControl target = pva.PlayerId.GetPlayer();
+            PlayerControl target = Utils.GetPlayerById((byte)pva.PlayerId);
             if (target == null) continue;
 
             PlayerControl seer = PlayerControl.LocalPlayer;
